@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Earth.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 52629a2b49cf5734c94c1b063905ded1
+  - enabled: 1
+    path: Assets/Scenes/Spaceship Timeline.unity
+    guid: 36fb86f5ddd3ebd448519eae57f353c0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2db14320ee17d504eba724c4509f5564, type: 2}

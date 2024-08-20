@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(3);
+        Debug.Log("Colliderr Happening?");
     }
 }
