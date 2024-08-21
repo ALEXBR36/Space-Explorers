@@ -35,11 +35,6 @@ public class Spaceman1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-
-        Debug.Log(currentSpeed + "Speed");
-
         Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
   
         transform.Translate(moveDirection * speed * Time.deltaTime);
@@ -48,9 +43,15 @@ public class Spaceman1 : MonoBehaviour
         animator.SetFloat("Look Y", moveDirection.x);
         animator.SetFloat("Look X", moveDirection.y);
 
-
-        
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 2.5f, LayerMask.GetMask("Karen"));
+        if (hit.collider != null)
+        {
+            Karen character = hit.collider.GetComponent<Karen>();
+            if (character != null)
+            {
+                character.DisplayDialogue();
+            }
+        }
 
 
 
