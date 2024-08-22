@@ -47,6 +47,7 @@ public class Spaceman1 : MonoBehaviour
         if (hit.collider != null)
         {
             Karen character = hit.collider.GetComponent<Karen>();
+
             if (character != null)
             {
                 character.DisplayDialogue();
