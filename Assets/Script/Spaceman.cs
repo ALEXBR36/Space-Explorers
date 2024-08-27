@@ -51,6 +51,8 @@ public class Spaceman1 : MonoBehaviour
             if (character != null)
             {
                 character.DisplayDialogue();
+
+               
             }
         }
 

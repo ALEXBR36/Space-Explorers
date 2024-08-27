@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FINAL DESIGN 1_0
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 3301
+        width: 330
+        height: 646
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7484d160fba6ae2488a5cb4d70bc1d32
+      internalID: 898625067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINAL DESIGN 1_1
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 3301
+        width: 330
+        height: 646
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3eb2471d4189a24495bd34e671687f8
+      internalID: -1626818445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINAL DESIGN 1_2
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 3301
+        width: 330
+        height: 646
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0873cf1f24dc13f41b7cd622949d0f25
+      internalID: 1860690342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINAL DESIGN 1_3
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 3301
+        width: 330
+        height: 646
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0721cf2f88dce47a4c30c1b36d3068
+      internalID: 690335648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FINAL DESIGN 1_0: 898625067
+      FINAL DESIGN 1_1: -1626818445
+      FINAL DESIGN 1_2: 1860690342
+      FINAL DESIGN 1_3: 690335648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
