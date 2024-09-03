@@ -8,6 +8,8 @@ public class Spaceman1 : MonoBehaviour
 
 
 {
+    public string[] Dialogue;
+
     Rigidbody2D rigidbody2d;
     Animator animator;
 
@@ -42,6 +44,7 @@ public class Spaceman1 : MonoBehaviour
 
         animator.SetFloat("Look Y", moveDirection.x);
         animator.SetFloat("Look X", moveDirection.y);
+
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 2.5f, LayerMask.GetMask("Karen"));
         if (hit.collider != null)
