@@ -20,4 +20,5 @@ public class Karen : MonoBehaviour
 
         animator.SetBool("karen", true);
     }
+  
 }
