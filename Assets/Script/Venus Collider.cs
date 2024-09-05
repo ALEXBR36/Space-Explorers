@@ -16,6 +16,6 @@ public class VenusCollider : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        karen.DialogueRandomiser();
+        //KarenVenus.DialogueRandomiser();
     }
 }
