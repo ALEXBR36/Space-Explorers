@@ -6,7 +6,7 @@ using UnityEngine;
 public class KarenVenus : MonoBehaviour
 {
     public GameObject[] Dialogue;
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
        DialogueRandomiser();
        Debug.Log(collision.name);
@@ -15,7 +15,15 @@ public class KarenVenus : MonoBehaviour
     {
         int randomNumber = Random.Range(0, 3);
 
-        Dialogue[randomNumber].gameObject.SetActive(true);  
+        Dialogue[randomNumber].gameObject.SetActive(true);
+        
+
+
+        if (Dialogue[randomNumber = 1])
+        {
+            Dialogue[randomNumber = 1].gameObject.SetActive(false);
+            
+        }
 
         Debug.Log(Dialogue[randomNumber]);
 
