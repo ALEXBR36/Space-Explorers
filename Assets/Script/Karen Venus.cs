@@ -28,10 +28,7 @@ public class KarenVenus : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         Dialogue[randomNumber].gameObject.SetActive(false);
-
         
-
-
         StopCoroutine(Timeuntilfalse());
     }
 
