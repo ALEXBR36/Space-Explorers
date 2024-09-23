@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 
 public class SpacemanVenus : MonoBehaviour
 {
-
+    public int health { get { return currentHealth; } }
+    public static int currentHealth;
+    public int maxHealth = 5;
 
     Rigidbody2D rigidbody2d;
     Animator animator;
@@ -103,6 +105,12 @@ public class SpacemanVenus : MonoBehaviour
                 speed = 0f;
             }
         }
+        void ChangeHealth(int amount)
+        {
+            currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
+            FIRE.instance.SetValue(currentHealth / (float)maxHealth);
+            Debug.Log("Current Health: " + currentHealth);
+        }
     }
 }
