@@ -14,5 +14,7 @@ public class SceneChangerVenus : MonoBehaviour
 
         if (ChangeTime < 0)
             SceneManager.LoadScene(SceneName);
+
+        
     }
 }

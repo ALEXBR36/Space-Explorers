@@ -12,7 +12,7 @@ public class KarenVenus : MonoBehaviour
     {
         Dialogue[1].gameObject.SetActive(false);
         DialogueRandomiser();
-       Debug.Log(collision.name);
+        Debug.Log(collision.name);
     }
     public void DialogueRandomiser()
     {

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SpacemanVenus : MonoBehaviour
 {
-    public int health { get { return currentHealth; } }
-    public static int currentHealth;
-    public int maxHealth = 5;
+    public int health { get { return currentFlame; } }
+    public static int currentFlame;
+    public int maxFlame = 5;
 
     Rigidbody2D rigidbody2d;
     Animator animator;
@@ -21,6 +22,8 @@ public class SpacemanVenus : MonoBehaviour
 
     float horizontal;
     float vertical;
+
+    public string SceneNamed;
 
     public static bool paused;
     public GameObject PauseMenu;
@@ -67,8 +70,6 @@ public class SpacemanVenus : MonoBehaviour
 
 
 
-
-
     }
     void FixedUpdate()
     {
@@ -105,12 +106,12 @@ public class SpacemanVenus : MonoBehaviour
                 speed = 0f;
             }
         }
-        void ChangeHealth(int amount)
-        {
-            currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+    public void Damage(int amount)
+    {
+        currentFlame = Mathf.Clamp(currentFlame + amount, 0, maxFlame);
 
-            FIRE.instance.SetValue(currentHealth / (float)maxHealth);
-            Debug.Log("Current Health: " + currentHealth);
-        }
+        FIRE.instance.SetValue(currentFlame / (float)maxFlame);
+        Debug.Log("Current Flame: " + currentFlame);
     }
 }
