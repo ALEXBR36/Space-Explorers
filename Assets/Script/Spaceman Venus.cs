@@ -39,6 +39,9 @@ public class SpacemanVenus : MonoBehaviour
         animator = GetComponent<Animator>();
 
         paused = false;
+
+        currentFlame = 2;
+        FIRE.instance.SetValue(currentFlame / (float)maxFlame);
     }
 
     // Update is called once per frame
@@ -96,6 +99,7 @@ public class SpacemanVenus : MonoBehaviour
                 PauseMenu.SetActive(false);
                 paused = false;
                 speed = 3f;
+        
             }
             else
             {

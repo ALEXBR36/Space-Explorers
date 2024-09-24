@@ -30,9 +30,9 @@ public class Damage : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer > 4 && SpacemanVenus.paused == false)
+            if (timer > 12 && SpacemanVenus.paused == false)
             {
-                GameObject.Find("SpacemanMainCharacter").GetComponent<SpacemanVenus>().Damage(-1);
+                GameObject.Find("SpacemanMainCharacter").GetComponent<SpacemanVenus>().Damage(1);
                 timer = 0;
                 Debug.Log("timer 0");
             }
