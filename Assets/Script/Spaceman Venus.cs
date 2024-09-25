@@ -11,6 +11,10 @@ public class SpacemanVenus : MonoBehaviour
     public static int currentFlame;
     public int maxFlame = 5;
 
+    //public int health { get { return currentLife; } }
+    public static int currentLife;
+    public int maxLife = 50;
+
     Rigidbody2D rigidbody2d;
     Animator animator;
 
@@ -42,6 +46,9 @@ public class SpacemanVenus : MonoBehaviour
 
         currentFlame = 2;
         FIRE.instance.SetValue(currentFlame / (float)maxFlame);
+
+        currentLife = 50;
+        Life.instance.SetValue(currentLife / (float)maxLife);
     }
 
     // Update is called once per frame
@@ -117,5 +124,12 @@ public class SpacemanVenus : MonoBehaviour
 
         FIRE.instance.SetValue(currentFlame / (float)maxFlame);
         Debug.Log("Current Flame: " + currentFlame);
+    }
+    public void LifeDamage(int amount)
+    {
+        currentLife = Mathf.Clamp(currentLife + amount, 0, maxLife);
+
+        Life.instance.SetValue(currentLife / (float)maxLife);
+        Debug.Log("Current Life: " + currentLife);
     }
 }
