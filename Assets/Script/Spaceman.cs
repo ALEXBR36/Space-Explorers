@@ -22,6 +22,10 @@ public class Spaceman1 : MonoBehaviour
     float horizontal;
     float vertical;
 
+    public int health { get { return currentFlame; } }
+    public static int currentFlame;
+    public int maxFlame = 5;
+
     [SerializeField] private InputActionReference moveActionToUse;
     [SerializeField] private float movespeed;
 
@@ -31,7 +35,10 @@ public class Spaceman1 : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        
+
+        currentFlame = 1;
+        FIRE.instance.SetValue(currentFlame / (float)maxFlame);
+        Debug.Log("value is set to 2");
     }
 
     // Update is called once per frame
@@ -40,7 +47,7 @@ public class Spaceman1 : MonoBehaviour
         Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
   
         transform.Translate(moveDirection * speed * Time.deltaTime);
-        Debug.Log(moveDirection.x + " " + moveDirection.y);
+        //Debug.Log(moveDirection.x + " " + moveDirection.y);
 
         animator.SetFloat("Look Y", moveDirection.x);
         animator.SetFloat("Look X", moveDirection.y);
@@ -73,5 +80,6 @@ public class Spaceman1 : MonoBehaviour
 
       
     }
+
 
 }

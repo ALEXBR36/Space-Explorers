@@ -12,7 +12,8 @@ public class FIRE : MonoBehaviour
 
     void Awake()
     {
-
+        originalSize = mask.rectTransform.rect.width;
+        instance = this;
     }
 
     public void Start()
