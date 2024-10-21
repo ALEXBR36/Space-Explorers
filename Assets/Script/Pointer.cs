@@ -9,7 +9,7 @@ public class Pointer : MonoBehaviour
 
     public void Awake()
     {
-        targetPos = new Vector3(-37x, 31); //the target position is defined as the volcano pos
+        targetPos = new Vector3(-37, 31); //the target position is defined as the volcano pos
         pointerRect = transform.Find("arrow").GetComponent<RectTransform>(); //referncing the pointer's positon
         Debug.Log("rect");
     }
