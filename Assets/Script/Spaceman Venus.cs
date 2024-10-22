@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -77,8 +78,26 @@ public class SpacemanVenus : MonoBehaviour
             }
         }
 
+        StartCoroutine(Lose());
+     
 
 
+
+    }
+    IEnumerator Lose()
+    {
+        yield return new WaitForSeconds(5);
+        if (currentFlame >= 5)
+        {
+            SceneManager.LoadSceneAsync(8);
+            Debug.Log("flame");
+        }
+
+        if (currentLife <= 0)
+        {
+            SceneManager.LoadSceneAsync(8);
+            Debug.Log("life");
+        }
 
     }
     void FixedUpdate()
