@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -26,6 +28,10 @@ public class Spaceman1 : MonoBehaviour
     public static int currentFlame;
     public int maxFlame = 5;
 
+    public static bool paused;
+    public GameObject PauseMenu;
+    public GameObject canvas;
+
     [SerializeField] private InputActionReference moveActionToUse;
     [SerializeField] private float movespeed;
 
@@ -35,6 +41,7 @@ public class Spaceman1 : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        paused = false;
 
         currentFlame = 1;
         FIRE.instance.SetValue(currentFlame / (float)maxFlame);
@@ -81,5 +88,31 @@ public class Spaceman1 : MonoBehaviour
       
     }
 
+    public void pause()
+    {
+        pauseMenu();
+    }
+    public void pauseMenu()
+    {
+        {
 
+            if (PauseMenu.activeInHierarchy == true)
+            {
+                //comes here if the game is already paused
+                canvas.SetActive(true);
+                PauseMenu.SetActive(false);
+                paused = false;
+                speed = 3f;
+
+            }
+            else
+            {
+                //comes here if the game is NOT paused
+                canvas.SetActive(false);
+                PauseMenu.SetActive(true);
+                paused = true;
+                speed = 0f;
+            }
+        }
+    }
 }

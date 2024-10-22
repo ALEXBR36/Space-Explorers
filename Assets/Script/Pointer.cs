@@ -13,7 +13,7 @@ public class Pointer : MonoBehaviour
     
     public void Awake()
     {
-        targetPos = new Vector3(-30, 18); //the target position is defined as the volcano pos
+        targetPos = new Vector3(-14, 23); //the target position is defined as the volcano pos
         pointerRect = transform.Find("arrow").GetComponent<RectTransform>(); //referncing the pointer's positon
         Debug.Log("rect");
     }
@@ -32,7 +32,7 @@ public class Pointer : MonoBehaviour
 
         pointerRect.localEulerAngles = new Vector3(0, 0, angle); //sets pointer to face angle
 
-        float borderSize = 100f; //setting a border
+        float borderSize = 50f; //setting a border
         Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(targetPos); //converts target to a screen point
         bool offScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize|| targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height -borderSize - borderSize; //basically just checks weather the target is off screen, and in relation to border
 
