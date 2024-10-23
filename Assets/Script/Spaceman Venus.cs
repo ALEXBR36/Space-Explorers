@@ -4,52 +4,54 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class SpacemanVenus : MonoBehaviour
 {
-    public int health { get { return currentFlame; } }
-    public static int currentFlame;
-    public int maxFlame = 5;
+    public int health { get { return currentFlame; } } //gets the flame count as per the other scripts
+    public static int currentFlame; //static variable that counts flame that works bewteen scripts
+    public int maxFlame = 5; //max flame
 
     //public int health { get { return currentLife; } }
-    public static int currentLife;
-    public int maxLife = 50;
+    public static int currentLife; //static variable for life
+    public int maxLife = 50; //max life
 
-    Rigidbody2D rigidbody2d;
-    Animator animator;
+    Rigidbody2D rigidbody2d; //referencing rigidbody2d component
+    Animator animator; //referencing animator component
 
-    public float currentSpeed;
+    //public float currentSpeed; //current speed of player
+    public float speed = 3.0f; //speed of player
+   
 
-    public float speed = 3.0f;
+    //Vector2 lookDirection = new Vector2(1, 1); //direction the player faces
 
-    Vector2 lookDirection = new Vector2(1, 1);
+    float horizontal; //horizontal value
+    float vertical; //vertical value
 
-    float horizontal;
-    float vertical;
+    //public string SceneNamed; //name of the scene which will be loaded
 
-    public string SceneNamed;
+    public static bool paused; //static bool (true or false) to see if game is paused
+    public GameObject PauseMenu; //a way to reference the gameobject in the inspector e.g. drag in the pausemenu into the public slot, and the code picks that up
+    public GameObject canvas;//a way to reference the gameobject in the inspector e.g. drag in the canvas into the public slot, and the code picks that up
 
-    public static bool paused;
-    public GameObject PauseMenu;
-    public GameObject canvas;
-
-    [SerializeField] private InputActionReference moveActionToUse;
-    [SerializeField] private float movespeed;
+    [SerializeField] private InputActionReference moveActionToUse; //references the input action for movement
+    //[SerializeField] private float movespeed; 
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>(); //start these components and attatch them to the player
         animator = GetComponent<Animator>();
 
-        paused = false;
+        paused = false; //set paused to false
 
-        currentFlame = 2;
-        FIRE.instance.SetValue(currentFlame / (float)maxFlame);
+        currentFlame = 2; //starting flame number
+        FIRE.instance.SetValue(currentFlame / (float)maxFlame); //then use this float to update the inital ui
 
-        currentLife = 50;
-        Life.instance.SetValue(currentLife / (float)maxLife);
+        currentLife = 50; //starting life number
+        Life.instance.SetValue(currentLife / (float)maxLife);//then use this float to update the inital ui
     }
 
     // Update is called once per frame
@@ -58,12 +60,12 @@ public class SpacemanVenus : MonoBehaviour
         //pauseMenu();
 
 
-        Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
+        Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>(); //creates a vector which reads the move input
 
-        transform.Translate(moveDirection * speed * Time.deltaTime);
+        transform.Translate(moveDirection * speed * Time.deltaTime); //move the player by its speed, move direction and by time by the last frame
         //Debug.Log(moveDirection.x + " " + moveDirection.y);
 
-        animator.SetFloat("Look Y", moveDirection.x);
+        animator.SetFloat("Look Y", moveDirection.x); //update animator to look in a certain direction
         animator.SetFloat("Look X", moveDirection.y);
 
 
@@ -78,7 +80,7 @@ public class SpacemanVenus : MonoBehaviour
             }
         }
 
-        StartCoroutine(Lose());
+        StartCoroutine(Lose()); //checks every frame and starts coroutine
      
 
 
@@ -86,31 +88,31 @@ public class SpacemanVenus : MonoBehaviour
     }
     IEnumerator Lose()
     {
-        yield return new WaitForSeconds(5);
-        if (currentFlame >= 5)
+        yield return new WaitForSeconds(1); //waits 1 second 
+        if (currentFlame >= 5) //if the current flame is more than or equal to 5 you have lost and it takes you to scene 8 as per the build settings
         {
             SceneManager.LoadSceneAsync(8);
-            Debug.Log("flame");
+            Debug.Log("flame"); //send message to console of why the game ended
         }
 
-        if (currentLife <= 0)
+        if (currentLife <= 0) //if the current life is equal to or less than zero the player woudl've lost, therefore aas per buidl settings they are taken to scene 8, the lose scene
         {
-            SceneManager.LoadSceneAsync(8);
-            Debug.Log("life");
+            SceneManager.LoadSceneAsync(8); 
+            Debug.Log("life"); //send message to console of why game ended
         }
 
     }
     void FixedUpdate()
     {
-        Vector2 position = rigidbody2d.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
+        Vector2 position = rigidbody2d.position; //gets the current postion of the rigidbody
+        position.x = position.x + speed * horizontal * Time.deltaTime; //update x position to the x position plus speed times horizontal times the time since the last frame
+        position.y = position.y + speed * vertical * Time.deltaTime;// update y position to the y position plus speed times horizontal times the time since the last frame
 
-        rigidbody2d.MovePosition(position);
+        rigidbody2d.MovePosition(position); //move the rigidbody as calculated above
 
 
     }
-    public void pause()
+    public void pause() //when button is pressed this code calls the pauseMenu function
     {
         pauseMenu();
     }
@@ -118,37 +120,37 @@ public class SpacemanVenus : MonoBehaviour
     {
         {
 
-            if (PauseMenu.activeInHierarchy == true)
+            if (PauseMenu.activeInHierarchy == true) //if the pause menu is on
             {
                 //comes here if the game is already paused
-                canvas.SetActive(true);
-                PauseMenu.SetActive(false);
-                paused = false;
-                speed = 3f;
+                canvas.SetActive(true); //sets the normal canvas true
+                PauseMenu.SetActive(false); //turns off pause menu
+                paused = false; //pause to false
+                speed = 3f; //allow player to move
         
             }
             else
             {
                 //comes here if the game is NOT paused
-                canvas.SetActive(false);
-                PauseMenu.SetActive(true);
+                canvas.SetActive(false);  //sets the normal canvas to be inactive and invisible
+                PauseMenu.SetActive(true); //turns on pause menu
                 paused = true;
-                speed = 0f;
+                speed = 0f; //prevent player from moving
             }
         }
     }
-    public void Damage(int amount)
+    public void Damage(int amount) //this function is called from other scripts and the amount is taken from that
     {
-        currentFlame = Mathf.Clamp(currentFlame + amount, 0, maxFlame);
+        currentFlame = Mathf.Clamp(currentFlame + amount, 0, maxFlame); //flame count is calculated by taking the original count and adding the amount then clamping it to not go below 0 or over 5.
 
-        FIRE.instance.SetValue(currentFlame / (float)maxFlame);
-        Debug.Log("Current Flame: " + currentFlame);
+        FIRE.instance.SetValue(currentFlame / (float)maxFlame); //updates the ui by calling the other scripts
+        Debug.Log("Current Flame: " + currentFlame); //sends message to console on the value of the current flame
     }
-    public void LifeDamage(int amount)
+    public void LifeDamage(int amount) //this function is called from other scripts and the amount is taken from that
     {
-        currentLife = Mathf.Clamp(currentLife + amount, 0, maxLife);
+        currentLife = Mathf.Clamp(currentLife + amount, 0, maxLife);//life count is calculated by taking the original count and adding the amount then clamping it to not go below 0 or over 5.
 
-        Life.instance.SetValue(currentLife / (float)maxLife);
-        Debug.Log("Current Life: " + currentLife);
+        Life.instance.SetValue(currentLife / (float)maxLife);//updates the ui by calling the other scripts
+        Debug.Log("Current Life: " + currentLife);//sends message to console on the value of the current life
     }
 }

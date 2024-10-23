@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class KarenVenus : MonoBehaviour
 {
-    public GameObject[] Dialogue;
+    public GameObject[] Dialogue; //creates an array which can be accessed in the inspector to contain different gameObjects
 
-    public int randomNumber;
-    public void OnTriggerEnter2D(Collider2D collision)
+    private int randomNumber; //creates a new integer called randomNumber
+
+    public void OnTriggerEnter2D(Collider2D collision) //on collison with anything 
     {
-        Dialogue[1].gameObject.SetActive(false);
-        DialogueRandomiser();
-        Debug.Log(collision.name);
+        Dialogue[0].gameObject.SetActive(false); //set the dialgoue number 0 to be false
+        DialogueRandomiser(); //call the function
+        Debug.Log(collision.name); //send message to console saying what it collided with
     }
-    public void DialogueRandomiser()
+    public void DialogueRandomiser() //said function
     {
-        int randomNumber = Random.Range(0, 3);
+        randomNumber = Random.Range(1, 3); //finds a random number between 1 and 2 as 0 has already been set to false
 
-        Debug.Log(Dialogue[randomNumber]);
-        Dialogue[randomNumber].gameObject.SetActive(true);
+        Debug.Log(Dialogue[randomNumber]); //send to console what number was picked
+        Dialogue[randomNumber].gameObject.SetActive(true); //set that random number gameobject in the arrow to be true
 
-        StartCoroutine(Timeuntilfalse());
+        StartCoroutine(TimeUntilFalse()); //start the coroutine
+
+       
     }
-    IEnumerator Timeuntilfalse()
+    IEnumerator TimeUntilFalse() // Coroutine to handle timed deactivation
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2); // Wait for two seconds
 
-        Dialogue[randomNumber].gameObject.SetActive(false);
-        
-        StopCoroutine(Timeuntilfalse());
+        Dialogue[randomNumber].gameObject.SetActive(false); // Deactivate the dialogue
+
+        // No need to stop the coroutine as it ends automatically
     }
+
 
 }
