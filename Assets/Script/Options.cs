@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Options : MonoBehaviour
 {
-    public void Option()
+    public void Option() //is called when button is pressed
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(2); //loads scene 2 in the build settings
     }
   
 }

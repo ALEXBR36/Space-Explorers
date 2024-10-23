@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
-      public void Play()
+      public void Play() //called when button is pressed in game
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1); //loads scene one as determined in build settings.
     }
     
 }

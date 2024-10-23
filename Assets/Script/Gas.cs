@@ -4,35 +4,29 @@ using UnityEngine;
 
 public class Gas : MonoBehaviour
 {
-    Rigidbody2D body;
-    Animator animators;
+    Rigidbody2D body; //refernces the rigidbody and allows me to access it easily 
+    Animator animators;//refernces the animator and allows me to access it easily 
 
-    public void Start()
+    public void Start() //on start
     {
-        animators = GetComponent<Animator>(); 
+        animators = GetComponent<Animator>(); //essentially attatches the two components to the gameobject
         body = GetComponent<Rigidbody2D>();
 
         
     }
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision) //when this gameobject is collided with do whats below
     {
-        Debug.Log("Collided");
-        GameObject.Find("SpacemanMainCharacter").GetComponent<SpacemanVenus>().LifeDamage(5);
+        Debug.Log("Collided"); //send to console the message that it has collided
+        GameObject.Find("SpacemanMainCharacter").GetComponent<SpacemanVenus>().LifeDamage(5); //find the spaceman character and it's script and call the lifeDamage fucntion and add five to it.
 
-        
+        animators.SetBool("OXYGEM", true); //sets the bool is the animations to be true meaning the animation changes
+        Debug.Log("triggereD"); //sends message to console
 
-        animators.SetBool("OXYGEM", true);
-        Debug.Log("triggereD");
-
-
-        StartCoroutine(TimeUntilDestroy());
-        
-
-
+        StartCoroutine(TimeUntilDestroy()); //starts a coroutine
     }
-    IEnumerator TimeUntilDestroy()
+    IEnumerator TimeUntilDestroy() //said coroutine
     {
-        yield return new WaitForSeconds(2);
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(2); //waits for two seconds so the animation can be seen
+        Destroy(this.gameObject); //then destroy this gameobject
     }
 }

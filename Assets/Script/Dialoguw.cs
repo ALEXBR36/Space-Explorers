@@ -44,8 +44,8 @@ public class Dialoguw : MonoBehaviour
     {
         foreach (char c in lines[index].ToCharArray()) //all this adds a charcter to the text and waits in between whatever the text speed is
         {
-            text.text += c;
-            yield return new WaitForSeconds(textspeed);
+            text.text += c; //adds a charcter to the text being displayed
+            yield return new WaitForSeconds(textspeed); //waits for the float textspeed for each character in seconds
         }
     }
     void NextLine()
@@ -58,7 +58,7 @@ public class Dialoguw : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false); //ends dialogue
+            gameObject.SetActive(false); //ends dialogue by hiding the game object 
         }
     }
 }

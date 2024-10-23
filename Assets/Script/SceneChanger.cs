@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public float ChangeTime;
-    public string SceneName;
+    public float ChangeTime; //creates float (decimal) variable which can be changed in inspector as it is public
+    public string SceneName; //creates string which can be changed in inspector as it is public
 
-    private void Update()
+    private void Update() //when button is pressed
     {
-        ChangeTime -= Time.deltaTime;
+        ChangeTime -= Time.deltaTime; //minuses a value of time each frame that can be tracked to allow the code to know when to function
 
-        if (ChangeTime < 0)
-        SceneManager.LoadScene(SceneName);
+        if (ChangeTime < 0) //if the time is less than zero
+        SceneManager.LoadScene(SceneName); //laod scene as per the scenename string in inspector
     }
 }

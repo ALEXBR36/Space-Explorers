@@ -9,7 +9,7 @@ public class VenusCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        karen = GetComponent<KarenVenus>();
+        //karen = GetComponent<KarenVenus>(); FAILED SCRIPT--DISREGARD
     }
 
     // Update is called once per frame

@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Karen : MonoBehaviour
 {
-    Animator animator;
+    Animator animator; //refernces the animator and allows me to access it
 
-    public GameObject dialogue;
+    public GameObject dialogue; //allows me to put in what dialogue gameobject I want in the inspector as it is public
 
-    public void Start()
+    public void Start() //on start
     {
-        dialogue.SetActive(false);
+        dialogue.SetActive(false); //set the dialogue to be unseen in the scene
 
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>(); //attatch the animator to gameobject
     }
-    public void DisplayDialogue()
+    public void DisplayDialogue() //when this function is called
     {
-        dialogue.SetActive(true);
+        dialogue.SetActive(true); //set the dialogue to be visible in scene
 
-        animator.SetBool("karen", true);
+        animator.SetBool("karen", true); //set the bool karen to be true in the animator so the animation plays
     }
   
 }
