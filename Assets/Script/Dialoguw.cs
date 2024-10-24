@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dialoguw : MonoBehaviour
 {
     public TextMeshProUGUI text; //naimg the variables
     public string[] lines; //array which holds dialogue
-    public float textspeed; //contols speed of text
+    public float textspeed; //contols speed of text, the lower the faster the text will display
 
     private int index; //tracks the line being displayed
 
@@ -58,7 +59,9 @@ public class Dialoguw : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false); //ends dialogue by hiding the game object 
+            gameObject.SetActive(false); //ends dialogue by hiding the game object
+
+            SceneManager.LoadSceneAsync(11); //loads scene based on build settings
         }
     }
 }

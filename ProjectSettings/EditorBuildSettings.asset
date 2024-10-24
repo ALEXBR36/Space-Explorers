@@ -35,5 +35,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Quitmenu.unity
     guid: aab3d0f5db52e8d4191229e41b0e9b3d
+  - enabled: 1
+    path: Assets/Scenes/Lose Scene Life.unity
+    guid: 26a55aa9f176d4dde8c30e2ec377462d
+  - enabled: 1
+    path: Assets/Scenes/VenusTimelineToFinish.unity
+    guid: b8b4a0b8af9e341439f2319f6b4c4e33
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2db14320ee17d504eba724c4509f5564, type: 2}

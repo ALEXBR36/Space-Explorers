@@ -97,7 +97,7 @@ public class SpacemanVenus : MonoBehaviour
 
         if (currentLife <= 0) //if the current life is equal to or less than zero the player woudl've lost, therefore aas per buidl settings they are taken to scene 8, the lose scene
         {
-            SceneManager.LoadSceneAsync(8); 
+            SceneManager.LoadSceneAsync(10); 
             Debug.Log("life"); //send message to console of why game ended
         }
 
